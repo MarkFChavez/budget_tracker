@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

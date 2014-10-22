@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

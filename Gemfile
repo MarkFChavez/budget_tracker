@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'bootstrap-sass'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

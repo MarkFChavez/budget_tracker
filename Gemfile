@@ -9,6 +9,10 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
+group :test do
+  gem 'faker'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record

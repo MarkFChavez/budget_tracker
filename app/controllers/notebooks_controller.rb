@@ -4,7 +4,7 @@ class NotebooksController < ApplicationController
   end
 
   def create
-    @notebook = Notebook.new(notebook_params)
+    @notebook = current_user.notebooks.build(notebook_params)
     @notebook.save!
 
     redirect_to root_path, notice: "Notebook created"

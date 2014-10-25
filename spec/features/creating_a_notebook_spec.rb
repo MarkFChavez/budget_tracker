@@ -27,10 +27,7 @@ RSpec.describe "Creating a notebook" do
 
     describe "that passes validation" do
       before do
-        click_on "Create notebook"
-        fill_in "Name", with: "Credit Card"
-        fill_in "Description", with: "credit card budget"
-        click_on "Save"
+        create_valid_notebook
       end
 
       it "shows it on the dashboard page" do

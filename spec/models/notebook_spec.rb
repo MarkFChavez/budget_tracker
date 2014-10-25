@@ -11,13 +11,21 @@ RSpec.describe Notebook do
       expect(notebook).not_to be_valid
     end
 
-    it "name should should be unique on user scope" do
+    it "name should not be unique on different users" do
       user1 = create(:user)
       user2 = create(:user)
       notebook_for_user1 = create(:notebook, name: "Notebook 1", user: user1)
 
       notebook = Notebook.new(@params.merge(name: "Notebook 1", user: user2))
       expect(notebook).to be_valid
+    end
+
+    it "name should be unique per user" do
+      user = create(:user)
+      notebook = create(:notebook, name: "This is a notebook", user: user)
+
+      notebook = Notebook.new(@params.merge(name: "This is a notebook", user: user))
+      expect(notebook).not_to be_valid
     end
 
     it "does not require description" do

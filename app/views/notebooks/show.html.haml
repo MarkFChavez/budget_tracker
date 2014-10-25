@@ -1,0 +1,6 @@
+%h3= @notebook.name
+%div
+  = @notebook.description
+
+.budget-items
+  = "#{pluralize(@notebook.budget_items.size, "item")} found"

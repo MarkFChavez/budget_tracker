@@ -3,6 +3,10 @@ class NotebooksController < ApplicationController
     @notebook = new_notebook
   end
 
+  def show
+    @notebook = notebook
+  end
+
   def create
     @notebook = current_user.notebooks.build(notebook_params)
     @notebook.save!
@@ -17,6 +21,10 @@ class NotebooksController < ApplicationController
 
   def new_notebook
     Notebook.new
+  end
+
+  def notebook
+    current_user.notebooks.find(params[:id])
   end
 
   def notebook_params

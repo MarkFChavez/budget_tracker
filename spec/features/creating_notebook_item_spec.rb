@@ -18,13 +18,7 @@ RSpec.describe "Creating a budget item for a notebook" do
     describe "creating a budget item" do
       describe "that passes validation" do
         before do
-          within("#notebook_#{first_notebook.id}") do
-            click_on "Add budget item for this notebook"
-          end
-
-          fill_in "Name", with: "Upcase Subscription (recurring)"
-          fill_in "Amount", with: "1800.95"
-          click_on "Add"
+          create_valid_budget_item(first_notebook)
         end
 
         it "shows a successful message" do

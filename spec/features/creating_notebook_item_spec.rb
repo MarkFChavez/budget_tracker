@@ -29,6 +29,10 @@ RSpec.describe "Creating a budget item for a notebook" do
       it "shows a successful message" do
         expect(page).to have_content "New budget item added to #{first_notebook.name}"
       end
+
+      it "shows the count of budget item" do
+        expect(page).to have_content "My first notebook (1)"
+      end
     end
   end
 end

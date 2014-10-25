@@ -32,13 +32,7 @@ RSpec.describe "Creating a budget item for a notebook" do
 
       describe "that did not pass validation" do
         before do
-          within("#notebook_#{first_notebook.id}") do
-            click_on "Add budget item for this notebook"
-          end
-
-          fill_in "Name", with: ""
-          fill_in "Amount", with: ""
-          click_on "Add"
+          create_invalid_budget_item(first_notebook)
         end
 
         it "shows an error message" do

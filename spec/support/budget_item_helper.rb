@@ -8,6 +8,16 @@ module BudgetItemHelper
     fill_in "Amount", with: "1800.95"
     click_on "Add"
   end
+
+  def create_invalid_budget_item(notebook)
+    within("#notebook_#{notebook.id}") do
+      click_on "Add budget item for this notebook"
+    end
+
+    fill_in "Name", with: ""
+    fill_in "Amount", with: ""
+    click_on "Add"
+  end
 end
 
 RSpec.configure do |config|

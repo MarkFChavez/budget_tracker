@@ -10,4 +10,10 @@ FactoryGirl.define do
     description { "my savings budget" }
     user
   end
+
+  factory :budget_item do
+    name { "Budget Item" }
+    amount { 500.00 }
+    notebook
+  end
 end

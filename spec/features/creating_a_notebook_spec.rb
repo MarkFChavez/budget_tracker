@@ -44,10 +44,7 @@ RSpec.describe "Creating a notebook" do
 
     describe "that failed validation" do
       before do
-        click_on "Create notebook"
-        fill_in "Name", with: ""
-        fill_in "Description", with: "invalid notebook"
-        click_on "Save"
+        create_invalid_notebook
       end
 
       it "shows an error message" do

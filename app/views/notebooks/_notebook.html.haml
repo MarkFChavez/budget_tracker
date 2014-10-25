@@ -1,8 +1,9 @@
 = div_for notebook do
   %p
-    = notebook.name
-    - if notebook.budget_items.any?
-      = "(#{notebook.budget_items.size})"
+    = link_to notebook do
+      = notebook.name
+      - if notebook.budget_items.any?
+        = "(#{notebook.budget_items.size})"
 
   %div
     = notebook.description

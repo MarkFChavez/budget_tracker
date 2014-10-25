@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe "Showing a notebook" do
   let(:user) { create(:user) }
   let!(:notebook) { create(:notebook, name: "My notebook", description: "my very first notebook", user: user) }
-  let!(:budget_item) { create(:budget_item, name: "First budget item", amount: 300.00, notebook: notebook) }
+  let!(:budget_item1) { create(:budget_item, name: "First budget item", amount: 300.00, notebook: notebook) }
+  let!(:budget_item2) { create(:budget_item, name: "Second budget item", amount: 300.00, notebook: notebook) }
 
   before do
     sign_in_as user
@@ -23,7 +24,12 @@ RSpec.describe "Showing a notebook" do
     end
 
     it "shows how many budget items this notebook have" do
-      expect(page).to have_content "1 item found"
+      expect(page).to have_content "2 items found"
+    end
+
+    it "shows the total amount for all budget items" do
+      expect(page).to have_content "Total"
+      expect(page).to have_content "600"
     end
   end
 end

@@ -4,3 +4,5 @@
 
 .budget-items
   = "#{pluralize(@notebook.budget_items.size, "item")} found"
+
+  %p= "Total: #{@notebook.total_amount}"

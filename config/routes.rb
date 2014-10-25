@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :notebooks, only: [:new]
+  resources :notebooks, only: [:new, :create]
 end

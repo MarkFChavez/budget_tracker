@@ -16,22 +16,41 @@ RSpec.describe "Creating a budget item for a notebook" do
     end
 
     describe "creating a budget item" do
-      before do
-        within("#notebook_#{first_notebook.id}") do
-          click_on "Add budget item for this notebook"
+      describe "that passes validation" do
+        before do
+          within("#notebook_#{first_notebook.id}") do
+            click_on "Add budget item for this notebook"
+          end
+
+          fill_in "Name", with: "Upcase Subscription (recurring)"
+          fill_in "Amount", with: "1800.95"
+          click_on "Add"
         end
 
-        fill_in "Name", with: "Upcase Subscription (recurring)"
-        fill_in "Amount", with: "1800.95"
-        click_on "Add"
+        it "shows a successful message" do
+          expect(page).to have_content "New budget item added to #{first_notebook.name}"
+        end
+
+        it "shows the count of budget item" do
+          expect(page).to have_content "My first notebook (1)"
+        end
       end
 
-      it "shows a successful message" do
-        expect(page).to have_content "New budget item added to #{first_notebook.name}"
-      end
+      describe "that did not pass validation" do
+        before do
+          within("#notebook_#{first_notebook.id}") do
+            click_on "Add budget item for this notebook"
+          end
 
-      it "shows the count of budget item" do
-        expect(page).to have_content "My first notebook (1)"
+          fill_in "Name", with: ""
+          fill_in "Amount", with: ""
+          click_on "Add"
+        end
+
+        it "shows an error message" do
+          expect(page).to have_content "Name can't be blank"
+          expect(page).to have_content "Amount can't be blank"
+        end
       end
     end
   end

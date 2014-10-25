@@ -11,7 +11,7 @@ class BudgetItemsController < ApplicationController
     redirect_to root_path, notice: "New budget item added to #{notebook.name}"
 
   rescue ActiveRecord::RecordInvalid
-    # not implemented yet
+    redirect_to root_path, alert: @budget_item.errors.full_messages.to_a.uniq
   end
 
   private

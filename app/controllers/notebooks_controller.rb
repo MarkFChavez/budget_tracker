@@ -10,7 +10,7 @@ class NotebooksController < ApplicationController
     redirect_to root_path, notice: "Notebook created"
 
   rescue ActiveRecord::RecordInvalid
-    # not implemented yet
+    redirect_to root_path, alert: @notebook.errors.full_messages.to_a.uniq
   end
 
   private

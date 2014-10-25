@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :notebooks, only: [:new, :create]
+  resources :notebooks, only: [:new, :create] do
+    resources :budget_item, only: [:new]
+  end
 end

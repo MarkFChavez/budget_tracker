@@ -2,4 +2,4 @@
   %p= notebook.name
   %div
     = notebook.description
-  = link_to "Add budget item for this notebook", "#", class: "new-budget-item"
+  = link_to "Add budget item for this notebook", new_notebook_budget_item_path(notebook), class: "new-budget-item"

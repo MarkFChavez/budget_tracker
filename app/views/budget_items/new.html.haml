@@ -1,6 +1,12 @@
 %p Create a new budget item
 
-= form_for @budget_item do |f|
+= form_for [@notebook, @budget_item] do |f|
   %div
     = f.label :name
     = f.text_field :name
+
+  %div
+    = f.label :amount
+    = f.number_field :amount
+
+  = f.submit "Add"

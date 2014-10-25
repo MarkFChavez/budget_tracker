@@ -14,6 +14,22 @@ RSpec.describe "Creating a budget item for a notebook" do
         expect(page).to have_css "a.new-budget-item", text: "Add budget item for this notebook"
       end
     end
+
+    describe "creating a budget item" do
+      before do
+        within("#notebook_#{first_notebook.id}") do
+          click_on "Add budget item for this notebook"
+        end
+
+        fill_in "Name", with: "Upcase Subscription (recurring)"
+        fill_in "Amount", with: "1800.95"
+        click_on "Add"
+      end
+
+      it "shows a successful message" do
+        expect(page).to have_content "New budget item added to #{first_notebook.name}"
+      end
+    end
   end
 end
 
